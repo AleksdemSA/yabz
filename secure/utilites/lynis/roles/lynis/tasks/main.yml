@@ -1,0 +1,16 @@
+- name: copy repo
+  copy: src=lynis.repo dest=/etc/yum.repos.d/lynis.repo mode=0755
+
+- name: install lynis
+  package: name=lynis state=latest
+
+- name: install rkhunter
+  package: name=rkhunter state=latest
+
+- name: set cron for lynis
+  cron:
+    name: "lynis"
+    weekday: "2"
+    minute: "0"
+    hour: "1"
+    job: "/usr/bin/lynis audit system | mail -s lynis root@localhost"

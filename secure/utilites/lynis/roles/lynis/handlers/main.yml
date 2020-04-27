@@ -1,0 +1,5 @@
+- name: lynis update
+  dnf:
+    name: "*"
+    state: latest
+
