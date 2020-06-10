@@ -6,7 +6,7 @@
 ```
 yum install -y epel-release
 yum update -y
-yum install -y wget tar htop lost mc
+yum install -y wget tar htop lsof mc vim
 ```
 
 ## OpenShift CLI
@@ -26,6 +26,15 @@ cp -v openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit/oc /usr/bin/
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io --nobest
+
+cat > /etc/docker/daemon.json << EOF
+{
+        "insecure-registries": [
+                "172.0.0.0/8"
+        ]
+}
+EOF
+
 systemctl start docker
 systemctl enable docker
 ```
