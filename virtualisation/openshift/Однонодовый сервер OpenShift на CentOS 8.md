@@ -39,11 +39,12 @@ systemctl start docker
 systemctl enable docker
 ```
 
-## OC Cluster UP
+## OC Cluster UP - поднимаем кластер
 
 И теперь уже создание сервера OpenShift. Первой командой создадим конфиги (чтобы после перезапуска сервера ничего не потерялось), второй уже проходим саму установку. SERVERNAME замените на полное название своего сервера. Иначе в браузере зайти будет чуть сложнее, придется что-то в hosts вносить и т.д.
 ```
 oc cluster up --skip-registry-check=false --public-hostname=SERVERNAME --routing-suffix SERVERNAME --loglevel=5 --base-dir='/opt/oc' --write-config=true
+
 oc cluster up --skip-registry-check=false --public-hostname=SERVERNAME --routing-suffix SERVERNAME --loglevel=5 --base-dir='/opt/oc'
 ```
 
